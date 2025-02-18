@@ -19,3 +19,14 @@ function agregarAmigo(){
         return;
      }
 }
+
+//Función para que se vea la lista
+function actualizarListaDeAmigos(){
+    let listaAmigos = document.getElementById('listaAmigos');//obtener el elemento de la lista
+    listaAmigos.innerHTML = "";//Limpiar la lista existente 
+    for (let i = 0; i < amigos.length; i++){//agregar a todos los amigos a la lista
+        let lista = document.createElement('li');
+        lista.textContent = amigos[i];
+        listaAmigos.appendChild(lista);
+    }
+}
