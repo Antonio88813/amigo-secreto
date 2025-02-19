@@ -9,12 +9,15 @@ function agregarAmigo(){
     let nombreAmigo = cambiarAmigo.value.trim(); //Variable para agregar al array
      
     if (nombreAmigo == ""){//Revisa si el campo esta vacio
+        document.getElementById('amigo').value = '';
         alert("Por favor, ingrese el nombre de un amigo.");
         return;
      } if (!regex.test(nombreAmigo)) {//Revisa que solo tenga letras y espacio entre palabras
+        document.getElementById('amigo').value = '';
         alert("El nombre solo puede contener letras.");
         return;
     } if (amigos.includes(nombreAmigo)){//Revisa si el nombre esta repetido
+        document.getElementById('amigo').value = '';
         alert("El nombre ya esta en la lista.");
         return;
      } else{//agrega el nombre al array
