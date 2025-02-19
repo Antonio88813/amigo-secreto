@@ -1,6 +1,7 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let amigos = [];//array para los nombres
 let sorteados = [];//array para los nombres ya sorteados
+let regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;//Expresión para permitir solo letras
 
 //Función agregar amigo
 function agregarAmigo(){
@@ -10,7 +11,10 @@ function agregarAmigo(){
     if (nombreAmigo == ""){//Revisa si el campo esta vacio
         alert("Por favor, ingrese el nombre de un amigo.");
         return;
-     } if (amigos.includes(nombreAmigo)){//Revisa si el nombre esta repetido
+     } if (!regex.test(nombreAmigo)) {//Revisa que solo tenga letras y espacio entre palabras
+        alert("El nombre solo puede contener letras.");
+        return;
+    } if (amigos.includes(nombreAmigo)){//Revisa si el nombre esta repetido
         alert("El nombre ya esta en la lista.");
         return;
      } else{//agrega el nombre al array
