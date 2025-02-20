@@ -32,10 +32,20 @@ function agregarAmigo(){
 function actualizarListaDeAmigos(){
     let listaAmigos = document.getElementById('listaAmigos');//obtener el elemento de la lista
     listaAmigos.innerHTML = "";//Limpiar la lista existente 
-    for (let i = 0; i < amigos.length; i++){//agregar a todos los amigos a la lista
+    for (let i = 0; i < amigos.length; i++) {
         let lista = document.createElement('li');
         lista.textContent = amigos[i];
-        listaAmigos.appendChild(lista);
+
+        // Crear botón de eliminación
+        let botonEliminar = document.createElement('button');
+        botonEliminar.textContent = "❌";
+        botonEliminar.classList.add("delete-button");
+        botonEliminar.onclick = function() {
+            eliminarAmigo(i);
+        };
+        lista.appendChild(botonEliminar); // Agregar el botón al elemento <li>
+        listaAmigos.appendChild(lista);   // Agregar el <li> a la lista
+        lista.classList.add('friend-list')//Estilo para la lista
     }
 }
 
@@ -58,4 +68,10 @@ function sortearAmigo(){
     let resultado = document.getElementById('resultado');//
     resultado.innerHTML = `Tu amigo secreto es <strong>${amigoSorteado}</strong>`;
     }   
+}
+
+//Función para eliminar un nombre de la lista
+function eliminarAmigo(index) {
+    amigos.splice(index, 1); // Elimina el amigo en la posición index
+    actualizarListaDeAmigos(); // Actualiza la lista en la pantalla
 }

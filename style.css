@@ -160,3 +160,25 @@ ul {
 .button-draw:hover {
     background-color: var(--color-button-hover);
 }
+
+.delete-button {
+    margin-left: 15px;
+    background-color: #f9e4b4;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: #8B0000;
+}
+
+li.friend-list {
+    background: #f9e4b4;
+    border-radius: 12px;
+    margin: 8px 0;
+    min-width: 200px;
+    padding: 8px 16px;
+    text-align: center;
+}
