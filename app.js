@@ -52,26 +52,34 @@ function actualizarListaDeAmigos(){
 //Función para sortear amigos
 function sortearAmigo(){
     if (amigos.length < 3) {//Pide minimo 3 nombres para iniciar el sorteo
-        alert('Inserte el nombre de 3 amigos minimo')        
-    } if (sorteados.length === amigos.length) { // Todos han sido sorteados
-        alert("Todos los amigos ya fueron sorteados.");
+        alert('Inserte el nombre de 3 amigos minimo');
+        return;
+    } if (amigos.length === sorteados.length){
+        document.getElementById('reiniciar-sorteo').removeAttribute('disabled');//Activar boton para volver a sortear a los amigos
+        alert("Todos los amigos ya fueron sorteados.");//Mensaje para avisar que se activo el boton 'volver a sortear amigos'
         return;
     } else {
         let amigoSorteado;
-    do {
-        let amigoAleatorio = Math.floor(Math.random() * amigos.length);//elije un numero aleartorio dentro del rango para elegir el amigo
-        amigoSorteado = amigos[amigoAleatorio];
-    } while (sorteados.includes(amigoSorteado)); // Repetir si el amigo ya fue sorteado
-
-    sorteados.push(amigoSorteado); // Marcar como sorteado
-
-    let resultado = document.getElementById('resultado');//
-    resultado.innerHTML = `Tu amigo secreto es <strong>${amigoSorteado}</strong>`;
-    }   
+        do {
+            let amigoAleatorio = Math.floor(Math.random() * amigos.length);//elije un numero aleartorio dentro del rango para elegir el amigo
+            amigoSorteado = amigos[amigoAleatorio];
+        } while (sorteados.includes(amigoSorteado)); // Repetir si el amigo ya fue sorteado
+        sorteados.push(amigoSorteado); // Marcar como sorteado
+        let resultado = document.getElementById('resultado');//
+        resultado.innerHTML = `Tu amigo secreto es <strong>${amigoSorteado}</strong>`;
+        return;
+    } 
 }
 
 //Función para eliminar un nombre de la lista
 function eliminarAmigo(index) {
     amigos.splice(index, 1); // Elimina el amigo en la posición index
     actualizarListaDeAmigos(); // Actualiza la lista en la pantalla
+}
+
+//Función para volver a sortear amigos
+function reiniciarJuego(){
+    sorteados = [];
+    document.getElementById("resultado").innerHTML = "El sorteo vuelve a empezar";
+    document.getElementById('reiniciar-sorteo').setAttribute('disabled','true');
 }
