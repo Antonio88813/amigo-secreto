@@ -55,7 +55,6 @@ function sortearAmigo(){
         alert('Inserte el nombre de 3 amigos minimo');
         return;
     } if (amigos.length === sorteados.length){
-        document.getElementById('reiniciar-sorteo').removeAttribute('disabled');//Activar boton para volver a sortear a los amigos
         alert("Todos los amigos ya fueron sorteados.");//Mensaje para avisar que se activo el boton 'volver a sortear amigos'
         return;
     } else {
@@ -79,15 +78,21 @@ function eliminarAmigo(index) {
 
 //Función para volver a sortear amigos
 function reiniciarJuego(){
-    sorteados = [];
-    document.getElementById("resultado").innerHTML = "El sorteo vuelve a empezar";
-    document.getElementById('reiniciar-sorteo').setAttribute('disabled','true');
+    if (amigos.length < 3){
+        document.getElementById("resultado").innerHTML = "No se a iniciado un sorteo";
+        return;
+    } else {
+        sorteados = [];
+        document.getElementById("resultado").innerHTML = "El sorteo vuelve a empezar";
+        return;
+    }
 }
 
-//Función para eliminar todos los nombres
-function eliminarTodoLosAmigos(){
+//Función para limpiar todos los valores
+function limpiarTodo(){
     amigos = [];
     sorteados = [];
+    document.getElementById('amigo').value = '';
     document.getElementById("resultado").innerHTML = "";
-    actualizarListaDeAmigos()
+    actualizarListaDeAmigos();
 }
