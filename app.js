@@ -83,3 +83,11 @@ function reiniciarJuego(){
     document.getElementById("resultado").innerHTML = "El sorteo vuelve a empezar";
     document.getElementById('reiniciar-sorteo').setAttribute('disabled','true');
 }
+
+//Función para eliminar todos los nombres
+function eliminarTodoLosAmigos(){
+    amigos = [];
+    sorteados = [];
+    document.getElementById("resultado").innerHTML = "";
+    actualizarListaDeAmigos()
+}
